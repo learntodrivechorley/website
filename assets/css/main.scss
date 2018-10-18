@@ -1,0 +1,159 @@
+---
+# this ensures Jekyll reads the file to be transformed into CSS later
+# only Main files contain this front matter, not partials.
+---
+
+/* ------------------------------------*\
+	$SETUP
+\*------------------------------------ */
+@import "config";
+@import "defaults";
+@import "base/base";
+@import "site/site"; 
+
+/* ------------------------------------*\
+	$LAYOUT
+\*------------------------------------ */
+
+body,
+html {
+  height: 100%;
+  font-family: "Krona One", sans-serif;
+  text-align: center;
+  color: $bc--white;
+}
+.site-wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto (-$footer-height);
+}
+.site-header {
+  padding: $base-spacing-unit;
+  background: $bc--black;
+  & .site-title {
+    color: $bc--white;
+    line-height: 1.4;
+    & .highlight--red {
+      color: $bc--red;
+    }
+  }
+  & .site-subtitle {
+    line-height: 1.4;
+  }
+}
+.nav {
+  background: $bc--red;
+  border-top: 4px solid $bc--white;
+  border-bottom: 2px solid $bc--black;
+  & .is-current {
+    background: $bc--white;
+    color: $bc--red;
+  }
+  @include mq($from: medium) {
+    & a {
+      padding: $half-spacing-unit;
+    }
+  }
+  @include mq($to: medium) {
+    & li {
+      display: block;
+    }
+    & li > a {
+      display: block;
+      padding: $base-spacing-unit 0;
+      border-top: 1px solid $bc--white;
+    }
+  }
+}
+.site-footer {
+  position: relative;
+  background: $bc--black;
+  min-height: $footer-height;
+  border-top: 4px solid $bc--red;
+  & p {
+    @include font-size(14px);
+    margin-top: 22px;
+  }
+}
+@include mq($from: medium) {
+  .car {
+    width: 100%;
+    height: 400px;
+    background-size: cover;
+    background-image: url(../img/car.jpg);
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='.../img/car.jpg', sizingMethod='scale');
+    -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../img/car.jpg', sizingMethod='scale')";
+  }
+}
+.page-title {
+  background: $bc--black;
+  padding: $base-spacing-unit;
+  text-transform: uppercase;
+  font-size: 24px;
+  line-height: 1.4;
+  border-top: 4px solid $bc--white;
+  border-bottom: 3px solid $bc--red;
+}
+.wrap {
+  margin: $half-spacing-unit auto $double-spacing-unit;
+  max-width: 900px;
+  padding: $base-spacing-unit;
+  color: $bc--black;
+  & p {
+    color: $bc--grey;
+    line-height: 2;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+}
+.add-testimonial {
+  border-top: 1px dotted $bc--grey;
+  padding-top: $base-spacing-unit;
+}
+.testimonials-list {
+  margin-bottom: $base-spacing-unit;
+}
+.testimonial {
+  border-top: 1px dotted $bc--grey;
+  padding: $base-spacing-unit 0;
+  & .testimonial__title {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  & .testimonial__content {
+    padding-top: $half-spacing-unit;
+    font-family: arial, sans-serif;
+  }
+  & .testimonial_date {
+    color: $bc--grey;
+    font-family: arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+  }
+}
+.btn {
+  background: $bc--red;
+  padding: $half-spacing-unit;
+  color: $bc--white;
+}
+.btn:hover {
+  background: $bc--black;
+  color: $bc--white;
+}
+input[type="submit"] {
+  @extend .btn;
+}
+input[type="text"],
+textarea {
+  padding: $half-spacing-unit;
+  margin-left: $half-spacing-unit;
+  border: 1px solid $bc--grey;
+}
+#comment {
+  width: 85%;
+  max-width: 400px;
+  height: 140px;
+}

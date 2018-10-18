@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7  is-loading" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8 is-loading" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9 is-loading" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8" />
+    <title>Andys Driving School - {{ page.title | capitalize }}</title>
+    <meta name="description" content="Andys Driving School - Learn to drive in chorley" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="/assets/css/main.css" />
+
+    <link href='http://fonts.googleapis.com/css?family=Krona+One' rel='stylesheet' type='text/css'>
+    <script src="/assets/js/libs/modernizr-2.6.2.min.js"></script>
+
+</head>
+
+<body>
+
+    <div class="site-wrap">
+
+        <header class="site-header">
+            <h1 class="site-title"><span class="highlight--red">A</span>ndys <span class="highlight--red">D</span>riving
+                <span class="highlight--red">S</span>chool</h1>
+            <h3 class="site-subtitle">Learning to drive in Chorley</h3>
+            <p>MOBILE: 07900255820</p>
+        </header>
+
+        <nav>
+            <ul class="nav">
+                <li><a href="/" {% if page.url == "/" %}class="is-current" {% endif %}>Homepage</a></li>
+                <li><a href="/the-car/" {% if page.url == "/the-car/" %}class="is-current" {% endif %}>The Car</a></li>
+                <li><a href="/prices/" {% if page.url == "/prices/" %}class="is-current" {% endif %}>Prices</a></li>
+                <li><a href="/testimonials/" {% if page.url == "/testimonials/" %}class="is-current" {% endif %}>Testimonials</a></li>
+            </ul>
+        </nav>
+
+        <div class="car"></div>
+
+        <div class="core" role="main">
+            <h1 class="page-title">{{ page.title }}</h1>
+            <div class="wrap">
+                {{ page.content }}
+
+                {% if page.url == "/testimonials/" %}
+
+                <section class="testimonials-list">
+                    <h3>What people have to say</h3>
+                    {% assign testimonials = site.data.testimonials | sort %}
+                    {% for t in testimonials reversed %}
+
+                    {% assign testimonial = t[1] %}
+
+                    <article class="testimonial">
+                        <h2 class="testimonial__title">{{ testimonial.name }} said: </h2>
+                        <span class="testimonial_date">{{ testimonial.date }}</span>
+                        <div class="testimonial__content">{{ testimonial.content }}</div>
+                    </article>
+                    {% endfor %}
+
+                </section>
+
+                <section class="add-testimonial">
+                    <h3 class="comment-reply-title">Add a testimonial</h3>
+                    <form action="" method="post">
+                        <p>
+                            <label for="author">Name <span class="required">*</span></label>
+                            <input id="author" name="author" type="text" value="" size="30" aria-required="true">
+                        </p>
+                        <p>
+                            <textarea id="comment" name="comment" aria-required="true"></textarea>
+                        </p>
+                        <p>
+                            <input name="submit" type="submit" id="submit" value="Add testimonial">
+                        </p>
+                    </form>
+                </section>
+
+                {% endif %}
+
+
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="site-footer">
+        <p>All rights reserved Andy's Driving School 2018</p>
+    </footer>
+
+    <script>
+        (function (b, o, i, l, e, r) {
+            b.GoogleAnalyticsObject = l;
+            b[l] || (b[l] =
+                function () {
+                    (b[l].q = b[l].q || []).push(arguments)
+                });
+            b[l].l = +new Date;
+            e = o.createElement(i);
+            r = o.getElementsByTagName(i)[0];
+            e.src = '//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e, r)
+        }(window, document, 'script', 'ga'));
+        ga('create', 'UA-46791502-1');
+        ga('send', 'pageview');
+    </script>
+</body>
+
+</html>

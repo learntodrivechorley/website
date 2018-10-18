@@ -1,0 +1,38 @@
+/*------------------------------------*\
+    $MISC
+\*------------------------------------*/
+
+/**
+ * The home of misc shared styles that aren't really objects
+ * 
+ */
+%wrap,
+.wrap {
+  position: relative;
+
+  &:after {
+    content: " ";
+    display: block;
+    clear: both;
+  }
+
+  @include mq($from: small) {
+    @include rem(
+      (
+        padding: 0 $base-spacing-unit
+      )
+    );
+  }
+
+  @include mq($from: medium) {
+    @include rem(
+      (
+        padding: 0 32px
+      )
+    );
+  }
+
+  @include old-ie {
+    min-width: 960px;
+  }
+}
