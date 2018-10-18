@@ -32,10 +32,10 @@
 
         <nav>
             <ul class="nav">
-                <li><a href="/" {% if page.url == "/" %}class="is-current" {% endif %}>Homepage</a></li>
-                <li><a href="/the-car/" {% if page.url == "/the-car/" %}class="is-current" {% endif %}>The Car</a></li>
-                <li><a href="/prices/" {% if page.url == "/prices/" %}class="is-current" {% endif %}>Prices</a></li>
-                <li><a href="/testimonials/" {% if page.url == "/testimonials/" %}class="is-current" {% endif %}>Testimonials</a></li>
+                <li><a href="/" {% if page.url=="/" %}class="is-current" {% endif %}>Homepage</a></li>
+                <li><a href="/the-car/" {% if page.url=="/the-car/" %}class="is-current" {% endif %}>The Car</a></li>
+                <li><a href="/prices/" {% if page.url=="/prices/" %}class="is-current" {% endif %}>Prices</a></li>
+                <li><a href="/testimonials/" {% if page.url=="/testimonials/" %}class="is-current" {% endif %}>Testimonials</a></li>
             </ul>
         </nav>
 
@@ -66,13 +66,15 @@
 
                 <section class="add-testimonial">
                     <h3 class="comment-reply-title">Add a testimonial</h3>
-                    <form action="" method="post">
+                    <form action="https://api.staticman.net/v2/entry/learntodrivechorley/website/master/testimonials"
+                        method="post">
+                        <input name="options[redirect]" type="hidden" value="https://www.learntodrivechorley.co.uk/testimonials-thank-you/">
                         <p>
-                            <label for="author">Name <span class="required">*</span></label>
-                            <input id="author" name="author" type="text" value="" size="30" aria-required="true">
+                            <label for="name">Name <span class="required">*</span></label>
+                            <input id="name" name="fields[name]" type="text" value="" size="30" aria-required="true">
                         </p>
                         <p>
-                            <textarea id="comment" name="comment" aria-required="true"></textarea>
+                            <textarea id="content" name="fields[content]" aria-required="true"></textarea>
                         </p>
                         <p>
                             <input name="submit" type="submit" id="submit" value="Add testimonial">
