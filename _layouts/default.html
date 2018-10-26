@@ -57,7 +57,7 @@
 
                     <article class="testimonial">
                         <h2 class="testimonial__title">{{ testimonial.name }} said: </h2>
-                        <span class="testimonial_date">{{ testimonial.date }}</span>
+                        <span class="testimonial_date">{{ testimonial.date | date_to_long_string }}</span>
                         <div class="testimonial__content">{{ testimonial.content }}</div>
                     </article>
                     {% endfor %}
