@@ -66,7 +66,8 @@
 
                 <section class="add-testimonial">
                     <h3 class="comment-reply-title">Add a testimonial</h3>
-                    <form action="https://learntodrivechorley-staticman.herokuapp.com/v2/entry/learntodrivechorley/website/master/testimonials"
+                    <div id="testimonials-status"></div>
+                    <form id="testimonials-form" action="https://learntodrivechorley-staticman.herokuapp.com/v2/entry/learntodrivechorley/website/master/testimonials"
                         method="post">
                         <input name="options[redirect]" type="hidden" value="https://www.learntodrivechorley.co.uk/testimonials-thank-you/">
                         <p>
@@ -93,6 +94,44 @@
     <footer class="site-footer">
         <p>All rights reserved Andy's Driving School 2018</p>
     </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $("#testimonials-form").focusin(function () {
+            $.get("https://learntodrivechorley-staticman.herokuapp.com")
+        });
+
+        $("#testimonials-form").submit(function (event) {
+
+            /* stop form from submitting normally */
+            event.preventDefault();
+
+            /* get the action attribute from the <form action=""> element */
+            var $form = $(this),
+                url = $form.attr('action');
+
+            /* Send the data using post with element id name and name2*/
+            var posting = $.post(url, {
+                fields: {
+                    name: $('#name').val(),
+                    content: $('#content').val()
+                }
+            });
+
+            posting.fail(function (err) {
+                $("#testimonials-status").html(
+                    "<p style=\"color: red;\">Error posting testimonial, please wait and try again."
+                );
+            });
+
+            /* Alerts the results */
+            posting.done(function (data) {
+                $("#testimonials-status").html(
+                    "<p>Thank you for your testimonal. It will be reviewed and should be on the website shortly.</p>"
+                );
+            });
+        });
+    </script>
 
     <script>
         (function (b, o, i, l, e, r) {
