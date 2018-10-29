@@ -102,6 +102,9 @@
         });
 
         $("#testimonials-form").submit(function (event) {
+            $("#testimonials-status").html(
+                "<p>Sending, please wait&hellip;</p>"
+            );
 
             /* stop form from submitting normally */
             event.preventDefault();
